@@ -1,0 +1,25 @@
+class Solution:
+    def freqAlphabets(self, s: str) -> str:
+        a_i={str(ord_val-96):chr(ord_val) for ord_val in range(97,106)}
+        j_z={str(val)+"#":chr(96+val) for val in range(10,27)}
+        res=""
+
+        l=0
+        collector=[]
+        for r,code in enumerate(s):
+            curr=""
+            if code=="#":
+                second=collector.pop()
+                first=collector.pop()
+                collector.append(first+second+"#")
+            else:
+                collector.append(code)
+        
+        for code in collector:
+            if len(code)>1:
+                res+=j_z[code]
+            else:
+                res+=a_i[code]
+        
+        return res
+        
