@@ -1,0 +1,10 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import Counter
+n=int(input())
+room_numbers=list(map(int,input().split()))
+room_cnts=Counter(room_numbers)
+for room in room_cnts:
+    if room_cnts[room]==1:
+        print(room)
+        break
+    
