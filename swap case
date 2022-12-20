@@ -1,0 +1,10 @@
+def swap_case(s):
+    res=[]
+    for letter in s:
+        if letter.islower():
+            res.append(letter.upper())
+        else:
+            res.append(letter.lower())
+    return ''.join(res)
+
+if __name__ == '__main__':
