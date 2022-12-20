@@ -1,0 +1,23 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+T=int(input())
+for _ in range(T):
+    n=int(input())
+    side_lengths=list(map(int,input().split()))
+    l,r=0,n-1
+    prev=2**31
+    while l<r:
+        left,right = side_lengths[l], side_lengths[r]
+        if max(left,right)>prev:
+            print("No")
+            break
+        if left>=right:
+            l+=1
+        else:
+            r-=1
+        prev=max(left,right)
+    else:
+        print("Yes")
+            
+            
+        
+        
