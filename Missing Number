@@ -1,0 +1,11 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        l=0
+        h=len(nums)-1
+        store=set(nums)
+        
+    
+
+        for i in range(len(nums)+1):
+            if i not in store:
+                return i
