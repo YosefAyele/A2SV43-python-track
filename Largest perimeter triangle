@@ -1,0 +1,15 @@
+class Solution:
+    def largestPerimeter(self, nums: List[int]) -> int:
+        nums.sort()
+        small_side=len(nums)-3
+        middle_side=len(nums)-2
+        large_side=len(nums)-1
+
+        while small_side>=0:
+            if nums[small_side]+nums[middle_side]>nums[large_side]:
+                return nums[small_side]+nums[middle_side]+nums[large_side]
+
+            large_side-=1
+            small_side-=1
+            middle_side-=1
+        return 0
