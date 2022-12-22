@@ -1,0 +1,21 @@
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+        loses={}
+        wins={}
+
+        for match in matches:
+            loses[match[1]]=loses.get(match[1],0)+1
+            wins[match[0]]=wins.get(match[0],0)+1
+
+        win_only=[]
+        for player in wins:
+            if player not in loses: 
+                win_only.append(player)
+        
+        lose_once=[]
+        for player in loses:
+            if loses[player]==1:
+                lose_once.append(player)
+        win_only.sort()
+        lose_once.sort()
+        return [win_only, lose_once]
