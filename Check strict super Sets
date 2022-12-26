@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+A=set(input().split())
+n=int(input())
+
+res=True
+for _ in range(n):
+    cur_set=set(input().split())
+    if len(cur_set)==len(A) or len(cur_set.difference(A))!=0:
+        res=False
+
+print(res)
+    
+    
