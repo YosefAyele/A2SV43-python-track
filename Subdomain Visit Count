@@ -1,0 +1,37 @@
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        counts={}
+
+        for domain in cpdomains:
+            count, subdomain=domain.split()
+
+            count=int(count)
+            subdomain=subdomain.split(".")
+            if len(subdomain)==3:
+                subdomain1=subdomain[0]+"."+subdomain[1]+"."+subdomain[2]
+                counts[subdomain1]=counts.get(subdomain1,0)+count
+
+                subdomain2=subdomain[1]+"."+subdomain[2]
+                counts[subdomain2]=counts.get(subdomain2,0)+count
+
+                subdomain3=subdomain[2]
+                counts[subdomain3]=counts.get(subdomain3,0)+count
+            elif len(subdomain)==2:
+                subdomain1=subdomain1=subdomain[0]+"."+subdomain[1]
+                counts[subdomain1]=counts.get(subdomain1,0)+count
+
+                subdomain2=subdomain[1]
+                counts[subdomain2]=counts.get(subdomain2,0)+count
+            else:
+                subdomain1=subdomain[0]
+                counts[subdomain1]=counts.get(subdomain1,0)+count
+        
+        res=[]
+        for key in counts:
+            visit_count=str(counts[key])+" "+key
+            res.append(visit_count)
+        
+        return res
+
+
+            
