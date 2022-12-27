@@ -1,0 +1,29 @@
+class Solution:
+    def findDuplicate(self, paths: List[str]) -> List[List[str]]:
+
+        duplicates={}
+        for path in paths:
+            path_list=path.split()
+
+            for i in range(1,len(path_list)):
+                content_extension=path_list[i]
+                opening_bracket=content_extension.index("(")
+                closing_bracket=content_extension.index(")")
+
+                content=content_extension[opening_bracket:closing_bracket]
+
+                if content in duplicates:
+                    duplicates[content].append(path_list[0]+"/"+content_extension[:opening_bracket])
+                else:
+                    duplicates[content]=[path_list[0]+"/"+content_extension[:opening_bracket]]
+        
+        res=[]
+
+        for content in duplicates:
+            if len(duplicates[content])>1:
+                res.append(duplicates[content])
+        
+        return res
+
+
+
