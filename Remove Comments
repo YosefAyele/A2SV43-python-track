@@ -1,0 +1,33 @@
+class Solution:
+    def removeComments(self, source: List[str]) -> List[str]:
+        res=[]
+
+        flag=False
+        uncommented=""
+        for line in source:
+
+            i=0
+            while i<len(line):
+                if line[i:i+2]=="/*" and not flag:
+                    i+=2
+                    flag=True
+                elif line[i:i+2]=="*/" and flag:
+                    i+=2
+                    flag=False
+                elif line[i:i+2]=="//" and not flag:
+                    i+=2
+                    break
+                else:
+                    if not flag:
+                        uncommented+=line[i]
+                    i+=1
+            
+                
+            if not flag:
+                res.append(uncommented)
+                uncommented=""
+        
+
+        final_res=[val for val in res if val!=""]
+
+        return final_res
