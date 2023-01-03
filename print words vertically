@@ -1,0 +1,22 @@
+class Solution:
+    def printVertically(self, s: str) -> List[str]:
+        words=s.split()
+
+        max_len=max(len(word) for word in words)
+
+        vertical_map={i:[] for i in range(max_len)}
+
+        for word in words:
+            for i in range(max_len):
+                if i<len(word):
+                    vertical_map[i].append(word[i])
+                else:
+                    vertical_map[i].append(" ")
+
+        res=[]
+        for i in vertical_map:
+            vertical_string="".join(vertical_map[i])
+            
+            res.append(vertical_string.rstrip())
+        
+        return res
