@@ -1,0 +1,82 @@
+class Solution:
+    def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
+        res=[]
+        queens_pos=set(tuple(position) for position in queens)
+       
+
+        # check all the 8 directions around the king
+
+        # 1 check to the left of the king till I can get the first queen
+        row,col = king[0],king[1]
+        while col<8:
+           col+=1
+           pos=[row,col]
+           if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        
+        #2. check to the left of the king
+        row,col = king[0],king[1]
+        while col>0:
+            col-=1
+            pos=[row,col]
+            if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        
+        # 3. check to the top of the king
+        row,col = king[0],king[1]
+        while row>0:
+            row-=1
+            pos=[row,col]
+            if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        # 4. check to the bottom of the king
+        row,col = king[0],king[1]
+        while row<8:
+            row+=1
+            pos=[row,col]
+            if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        # 5. check to the top left of the king
+        row,col = king[0],king[1]
+        while col>0 and row>0:
+            col-=1
+            row-=1
+            pos=[row,col]
+            if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        
+        # 6.check to the top right of the king
+        row,col = king[0],king[1]
+        while col<8 and row>0:
+            col+=1
+            row-=1
+            pos=[row,col]
+            if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        # 7. check to the bottom left of the king
+        row,col = king[0],king[1]
+        while col>0 and row<8:
+            col-=1
+            row+=1
+            pos=[row,col]
+            if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        # 8.check to the bottom right of the king
+        row,col = king[0],king[1]
+        while col<8 and row<8:
+            col+=1
+            row+=1
+            pos=[row,col]
+            if tuple(pos) in queens_pos:
+               res.append(pos)
+               break
+        
+        return res
+        
