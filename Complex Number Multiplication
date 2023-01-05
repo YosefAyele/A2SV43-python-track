@@ -1,0 +1,21 @@
+class Solution:
+    def complexNumberMultiply(self, num1: str, num2: str) -> str:
+        number1=num1.split("+")
+        number2=num2.split("+")
+
+        int_=0
+        complex_=0
+
+        for n1 in number1:
+            for n2 in number2:
+                if n1[-1]!="i" and n2[-1]!="i":
+                    int_+=(int(n1)*int(n2))
+                elif n1[-1]=="i" and n2[-1]!="i":
+                    complex_+=(int(n1[:-1])*int(n2))
+                elif n1[-1]!="i" and n2[-1]=="i":
+                    complex_+=(int(n1)*int(n2[:-1]))
+                else:
+                    int_-=(int(n1[:-1])*int(n2[:-1]))
+
+        return str(int_) + "+" + str(complex_) + "i"
+                
