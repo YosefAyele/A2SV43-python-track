@@ -1,0 +1,13 @@
+class Solution:
+    def arrayChange(self, nums: List[int], operations: List[List[int]]) -> List[int]:
+        numIdx={num:i for i,num in enumerate(nums)}
+
+        for this,replacing in operations:
+            idx=numIdx[this]
+            numIdx.pop(this)
+
+            nums[idx]=replacing
+            numIdx[replacing]=idx
+        
+        return nums
+
