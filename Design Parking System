@@ -1,0 +1,15 @@
+class ParkingSystem:
+
+    def __init__(self, big: int, medium: int, small: int):
+        self.slots=[big,medium,small]
+        self.car_count=[0,0,0]
+
+    def addCar(self, carType: int) -> bool:
+        self.car_count[carType-1]+=1
+        if self.slots[carType-1]<self.car_count[carType-1]:
+            return False
+        return True
+
+# Your ParkingSystem object will be instantiated and called as such:
+# obj = ParkingSystem(big, medium, small)
+# param_1 = obj.addCar(carType)
