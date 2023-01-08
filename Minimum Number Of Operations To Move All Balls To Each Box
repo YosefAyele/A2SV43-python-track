@@ -14,3 +14,29 @@ class Solution:
             res[i]=operations
         
         return res
+        
+        #optimized O(N) solution
+        class Solution:
+            def minOperations(self, boxes: str) -> List[int]:
+                # calculate number of operations to be done to the left and to the right of a single index
+
+                n=len(boxes)
+                # Calculate left operations
+                operationsBefore=[0]*n
+                onesBefore=int(boxes[0])
+
+                for i in range(1,n):
+                    operationsBefore[i]=operationsBefore[i-1]+onesBefore
+                    onesBefore+=int(boxes[i])
+
+                # Calculate right operations
+                operationsAfter=[0]*n
+                onesAfter=int(boxes[n-1])
+
+                for i in range(n-2,-1,-1):
+                    operationsAfter[i]=operationsAfter[i+1]+onesAfter
+                    onesAfter+=int(boxes[i])
+
+                return [operationsBefore[i]+operationsAfter[i] for i in range(n)]
+
+        
