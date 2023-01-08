@@ -1,0 +1,25 @@
+class Solution:
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        lesses=[]
+        greaters=[]
+        equals=0
+        for num in nums:
+            if num>pivot:
+                greaters.append(num)
+            elif num<pivot:
+                lesses.append(num)
+            else:
+                equals+=1
+        return lesses+equals*[pivot]+greaters
+
+        # trying to optimize
+        less = 0 
+        greater=len(nums)-1
+
+        for i,num in enumerate(nums):
+            if num<=pivot:
+                nums[i],nums[less] = nums[less], nums[i]
+                less+=1
+
+        return nums
+                
