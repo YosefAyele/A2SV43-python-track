@@ -1,0 +1,55 @@
+class Solution:
+    def validTicTacToe(self, board: List[str]) -> bool:
+     
+        xwins=False
+        owins=False
+
+        numberOfX=0
+        numberOfO=0
+
+        for i in range(3):
+            for j in range(3):
+                if board[i][j]=="X":
+                    numberOfX+=1
+                elif board[i][j]=="O":
+                    numberOfO+=1
+        # check rows
+        row1="".join([board[0][i] for i in range(3)])
+        row2="".join([board[1][i] for i in range(3)])
+        row3="".join([board[2][i] for i in range(3)])
+
+        if row1=="XXX" or row2=="XXX" or row3=="XXX":
+            xwins=True
+        if row1=="OOO" or row2=="OOO" or row3=="OOO":
+            owins=True
+        # check columns
+        col1="".join([board[i][0] for i in range(3)])
+        col2="".join([board[i][1] for i in range(3)])
+        col3="".join([board[i][2] for i in range(3)])
+
+        if col1=="XXX" or col2=="XXX" or col3=="XXX":
+            xwins=True
+        if col1=="OOO" or col2=="OOO" or col3=="OOO":
+            owins=True
+        
+        # check diagonals
+        diagonal1="".join([board[i][i] for i in range(3)])
+        diagonal2="".join([board[i][2-i] for i in range(3)])
+
+
+        if diagonal1=="XXX" or diagonal2=="XXX":
+            xwins=True
+        if diagonal1=="OOO" or diagonal2=="OOO":
+            owins=True
+        print(xwins , owins)
+        if xwins:
+       
+            return not owins and numberOfX-numberOfO==1
+        elif owins:
+            
+            return  not xwins and numberOfX==numberOfO
+        else:
+          
+            return numberOfX>=numberOfO and  numberOfX-numberOfO<=1
+        
+        
